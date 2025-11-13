@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Standar;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -50,5 +51,14 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+
+
+    // belongsToMany(ModelTujuan::class, 'nama_tabel_pivot', 'foreignKey_di_model_ini', 'foreignKey_di_model_tujuan')
+
+    public function standars()
+    {
+        return $this->belongsToMany(Standar::class, 'tb_standar_user', 'user_id', 'standar_id');
     }
 }
