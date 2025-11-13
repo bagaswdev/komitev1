@@ -4,8 +4,88 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa7873cd5d15f6140efb985c4ea9d50d",
+    "content-hash": "e4220a24ac86ce34f19b580336682be9",
     "packages": [
+        {
+            "name": "andreia/filament-nord-theme",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andreia/filament-nord-theme.git",
+                "reference": "25d8621e6d22f644b985b0240c873a7fb5b87d02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andreia/filament-nord-theme/zipball/25d8621e6d22f644b985b0240c873a7fb5b87d02",
+                "reference": "25d8621e6d22f644b985b0240c873a7fb5b87d02",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0",
+                "illuminate/contracts": "^10.0|^11.0|^12.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.0.1||^3.0",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.10.0||^8.1.1",
+                "orchestra/testbench": "^8.22.0||^9.0.0||^10.0.0",
+                "pestphp/pest": "^2.1||^3.0",
+                "pestphp/pest-plugin-arch": "^2.0||^3.0",
+                "pestphp/pest-plugin-laravel": "^2.0||^3.0",
+                "pestphp/pest-plugin-livewire": "^2.1||^3.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0||^2.0",
+                "phpstan/phpstan-phpunit": "^1.0||^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Andreia\\FilamentNordTheme\\FilamentNordThemeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Andreia\\FilamentNordTheme\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreia Bohner",
+                    "email": "andreiabohner@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A minimalist Arctic Nord theme for FilamentPHP",
+            "homepage": "https://github.com/andreia/filament-nord-theme",
+            "keywords": [
+                "arctic",
+                "filament",
+                "filament-theme",
+                "filamentphp",
+                "laravel",
+                "nord-theme",
+                "php",
+                "theme"
+            ],
+            "support": {
+                "issues": "https://github.com/andreia/filament-nord-theme/issues",
+                "source": "https://github.com/andreia/filament-nord-theme"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/andreia",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-07-13T19:16:27+00:00"
+        },
         {
             "name": "anourvalar/eloquent-serialize",
             "version": "1.3.4",
@@ -1159,6 +1239,117 @@
                 }
             ],
             "time": "2025-03-06T22:45:56+00:00"
+        },
+        {
+            "name": "filafly/brisk",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filafly/brisk.git",
+                "reference": "7b020cf8f9d3e0dcb95271f3d28e612fe7c0d448"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/filafly/brisk/zipball/7b020cf8f9d3e0dcb95271f3d28e612fe7c0d448",
+                "reference": "7b020cf8f9d3e0dcb95271f3d28e612fe7c0d448",
+                "shasum": ""
+            },
+            "require": {
+                "filafly/theme-core": "^0.1.0",
+                "filament/filament": "^4.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.22",
+                "phpunit/phpunit": "^12.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Filafly\\Themes\\Brisk\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Nolan Nordlund",
+                    "email": "nolan@filafly.com",
+                    "homepage": "https://www.filafly.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple, friendly theme for Filament.",
+            "homepage": "https://filafly.com/themes/brisk",
+            "keywords": [
+                "Simple",
+                "brisk",
+                "filament",
+                "friendly",
+                "laravel",
+                "theme"
+            ],
+            "support": {
+                "issues": "https://github.com/filafly/brisk/issues",
+                "source": "https://github.com/filafly/brisk/tree/v1.0.1"
+            },
+            "time": "2025-08-04T20:59:26+00:00"
+        },
+        {
+            "name": "filafly/theme-core",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filafly/theme-core.git",
+                "reference": "7f7c7283d251bd3e3033c6fec440ecf3dbdd68ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/filafly/theme-core/zipball/7f7c7283d251bd3e3033c6fec440ecf3dbdd68ae",
+                "reference": "7f7c7283d251bd3e3033c6fec440ecf3dbdd68ae",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.22"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Filafly\\Themes\\Core\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Nolan Nordlund",
+                    "email": "nolan@filafly.com",
+                    "homepage": "https://www.filafly.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An extendable theme class accelerating development of Filament themes.",
+            "homepage": "https://filafly.com/",
+            "keywords": [
+                "extendable",
+                "filament",
+                "laravel",
+                "template",
+                "theme"
+            ],
+            "support": {
+                "issues": "https://github.com/filafly/theme-core/issues",
+                "source": "https://github.com/filafly/theme-core/tree/v0.1.0"
+            },
+            "time": "2025-06-30T17:18:49+00:00"
         },
         {
             "name": "filament/actions",
@@ -3583,6 +3774,48 @@
             "time": "2025-03-24T10:02:05+00:00"
         },
         {
+            "name": "muazzam/slick-scrollbar",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Muazzamkhan95/slick-scrollbar.git",
+                "reference": "4cd7fcd73fa0a70ca9475ff6a53fd2dc87ff6d87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Muazzamkhan95/slick-scrollbar/zipball/4cd7fcd73fa0a70ca9475ff6a53fd2dc87ff6d87",
+                "reference": "4cd7fcd73fa0a70ca9475ff6a53fd2dc87ff6d87",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0",
+                "php": "^8.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Muazzam\\SlickScrollbar\\SlickScrollbarServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Muazzam\\SlickScrollbar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Slick Scrollbar plugin for Filament panels (Filament v4).",
+            "support": {
+                "issues": "https://github.com/Muazzamkhan95/slick-scrollbar/issues",
+                "source": "https://github.com/Muazzamkhan95/slick-scrollbar/tree/v1.0.0"
+            },
+            "time": "2025-09-05T23:32:40+00:00"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "3.10.3",
             "source": {
@@ -4150,6 +4383,85 @@
                 }
             ],
             "time": "2025-09-03T16:03:54+00:00"
+        },
+        {
+            "name": "osamanagi/filament-abyss-theme",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/osamanagi/filament-abyss-theme.git",
+                "reference": "2518678abfb28fc638a025172f72fde0ebac18e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/osamanagi/filament-abyss-theme/zipball/2518678abfb28fc638a025172f72fde0ebac18e9",
+                "reference": "2518678abfb28fc638a025172f72fde0ebac18e9",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0",
+                "illuminate/contracts": "^10.0|^11.0|^12.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.0.1||^3.0",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.10.0||^8.1.1",
+                "orchestra/testbench": "^8.22.0||^9.0.0||^10.0.0",
+                "pestphp/pest": "^2.1||^3.0",
+                "pestphp/pest-plugin-arch": "^2.0||^3.0",
+                "pestphp/pest-plugin-laravel": "^2.0||^3.0",
+                "pestphp/pest-plugin-livewire": "^2.1||^3.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0||^2.0",
+                "phpstan/phpstan-phpunit": "^1.0||^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nagi\\FilamentAbyssTheme\\FilamentAbyssThemeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nagi\\FilamentAbyssTheme\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Osama Nagi",
+                    "email": "osamanagiworks@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An aesthetic Abyss theme for FilamentPHP",
+            "keywords": [
+                "abyss-theme",
+                "aesthetic",
+                "filament",
+                "filament-theme",
+                "filamentphp",
+                "laravel",
+                "php",
+                "theme"
+            ],
+            "support": {
+                "issues": "https://github.com/osamanagi/filament-abyss-theme/issues",
+                "source": "https://github.com/osamanagi/filament-abyss-theme/tree/1.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/osamanagi",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-09-08T15:27:07+00:00"
         },
         {
             "name": "paragonie/constant_time_encoding",
@@ -5102,6 +5414,69 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.1"
             },
             "time": "2025-09-04T20:59:21+00:00"
+        },
+        {
+            "name": "resma/filament-awin-theme",
+            "version": "v1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/resmatech/filament-awin-theme.git",
+                "reference": "a508ab4c2ddaa7ab01f85a13d96e39af44169b20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/resmatech/filament-awin-theme/zipball/a508ab4c2ddaa7ab01f85a13d96e39af44169b20",
+                "reference": "a508ab4c2ddaa7ab01f85a13d96e39af44169b20",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "FilamentAwinTheme": "Resma\\FilamentAwinTheme\\Facades\\FilamentAwinTheme"
+                    },
+                    "providers": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Resma\\FilamentAwinTheme\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rebwar Mustafa",
+                    "email": "hello@resma.tech",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A modern, responsive, and customizable theme for FilamentPHP, designed to elevate your admin panel with a sleek interface and seamless user experience.",
+            "homepage": "https://github.com/resmatech/filament-awin-theme",
+            "keywords": [
+                "Resma",
+                "filament",
+                "filament-awin-theme",
+                "filamentphp",
+                "laravel",
+                "theme"
+            ],
+            "support": {
+                "issues": "https://github.com/resmatech/filament-awin-theme/issues",
+                "source": "https://github.com/resmatech/filament-awin-theme"
+            },
+            "time": "2025-10-31T17:23:02+00:00"
         },
         {
             "name": "ryangjchandler/blade-capture-directive",

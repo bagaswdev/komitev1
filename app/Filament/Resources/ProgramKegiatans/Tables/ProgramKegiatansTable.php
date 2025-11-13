@@ -45,15 +45,45 @@ class ProgramKegiatansTable
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            // ->filters([
+            //     SelectFilter::make('id_standar')
+            //         ->label('Filter Standar')
+            //         ->options(function () {
+            //             $user = auth()->user();
+            //             return $user->standars()->pluck('nama_standar', 'id');
+            //         })
+            //     // ->disablePlaceholder(), // <- ini menghilangkan option "All"
+            // ], layout: FiltersLayout::BeforeContent) // or `FiltersLayout::AfterContent`
             ->filters([
                 SelectFilter::make('id_standar')
                     ->label('Filter Standar')
                     ->options(function () {
                         $user = auth()->user();
-                        return $user->standars()->pluck('nama_standar', 'id');
+                        $options = [];
+
+                        // // Tambahkan opsi "Semua" hanya untuk super admin
+                        // if ($user->hasRole('Super Admin')) {
+                        //     $options[''] = 'Semua'; // Kunci kosong untuk "All"
+                        // }
+
+                        // Ambil standar sesuai role
+                        if ($user->hasRole('Super Admin')) {
+                            $standars = \App\Models\Standar::pluck('nama_standar', 'id');
+                        } else {
+                            $standars = $user->standars()->pluck('nama_standar', 'id');
+                        }
+
+                        return $options + $standars->toArray();
                     })
-                // ->disablePlaceholder(), // <- ini menghilangkan option "All"
-            ], layout: FiltersLayout::BeforeContent) // or `FiltersLayout::AfterContent`
+                    ->placeholder('Pilih Standar')
+                    ->query(function ($query, $state) {
+                        if ($state !== null && $state !== '') {
+                            $query->where('id_standar', $state);
+                        }
+                        // Jika $state kosong atau null → tidak filter (tampilkan semua)
+                    })
+                    ->default('') // Default ke "Semua" jika super admin
+            ], layout: FiltersLayout::BeforeContent)
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
