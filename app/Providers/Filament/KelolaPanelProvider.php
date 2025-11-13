@@ -2,8 +2,10 @@
 
 namespace App\Providers\Filament;
 
-use Filament\Http\Middleware\Authenticate;
+use Andreia\FilamentNordTheme\FilamentNordThemePlugin;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
+use Filafly\Themes\Brisk\BriskTheme;
+use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -19,6 +21,9 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Muazzam\SlickScrollbar\SlickScrollbarPlugin;
+use Nagi\FilamentAbyssTheme\FilamentAbyssThemePlugin;
+use Resma\FilamentAwinTheme\FilamentAwinTheme;
 
 class KelolaPanelProvider extends PanelProvider
 {
@@ -30,7 +35,8 @@ class KelolaPanelProvider extends PanelProvider
             ->path('kelola')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
+                'secondary' => \Filament\Support\Colors\Color::Pink,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
@@ -55,9 +61,24 @@ class KelolaPanelProvider extends PanelProvider
             ])
             ->plugins([
                 FilamentShieldPlugin::make(),
+                FilamentAwinTheme::make()
+                    ->primaryColor('#3b82f6'),
+                // FilamentAbyssThemePlugin::make(),
+                // FilamentNordThemePlugin::make(),
+                // BriskTheme::make(),
+                SlickScrollbarPlugin::make()
+                    ->size('6px')                   // scrollbar width/height (default: 8px)
+                    ->palette('secondary')            // force panel palette ('primary' or 'secondary')
+                    ->color(Color::Pink)           // use a Filament palette (500 normal, 600 auto for hover)
+                    ->hoverColor(Color::Pink, 700) // pick a custom shade
+                    ->color('#ef4444')              // hex
+                    ->hoverColor('rgb(220 38 38)')  // rgb()
+                    ->color('var(--secondary-500)'),
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            // ->viteTheme('resources/css/filament/kelola/theme.css')
+            ->sidebarFullyCollapsibleOnDesktop();
     }
 }

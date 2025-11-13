@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources\Standars\Schemas;
 
-use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 
 class StandarForm
 {
@@ -13,6 +14,11 @@ class StandarForm
             ->components([
                 TextInput::make('nama_standar')
                     ->required(),
+
+                Select::make('users')
+                    ->label('User yang punya standar ini')
+                    ->multiple()
+                    ->relationship('users', 'name'),
             ]);
     }
 }
