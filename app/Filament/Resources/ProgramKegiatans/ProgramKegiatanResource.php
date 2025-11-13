@@ -15,12 +15,22 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class ProgramKegiatanResource extends Resource
 {
     protected static ?string $model = ProgramKegiatan::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    // protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-pencil-square';
+
+
+    protected static string|UnitEnum|null $navigationGroup = 'Pendapatan & Anggaran';
+
+    protected static ?string $navigationLabel = 'Rencana Program Kegiatan';
+    protected static ?int $navigationSort = 2;
+    protected static ?string $slug = 'program-kegiatan'; // ini slug URL
 
     public static function form(Schema $schema): Schema
     {
@@ -31,6 +41,15 @@ class ProgramKegiatanResource extends Resource
     {
         return ProgramKegiatanInfolist::configure($schema);
     }
+
+    public static function getTableQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        $user = auth()->user();
+        $standarIds = $user->standars()->pluck('id');
+
+        return parent::getTableQuery()->whereIn('id_standar', $standarIds);
+    }
+
 
     public static function table(Table $table): Table
     {

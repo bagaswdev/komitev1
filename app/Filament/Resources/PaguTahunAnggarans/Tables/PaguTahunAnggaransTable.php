@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Standars\Tables;
+namespace App\Filament\Resources\PaguTahunAnggarans\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -9,7 +9,7 @@ use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class StandarsTable
+class PaguTahunAnggaransTable
 {
     public static function configure(Table $table): Table
     {
@@ -18,17 +18,19 @@ class StandarsTable
                 // TextColumn::make('id')
                 //     ->label('ID')
                 //     ->searchable(),
-                TextColumn::make('nama_standar')
-                    ->searchable(),
-
-                TextColumn::make('users.name')
-                    ->label('Penanggung Jawab')
-                    ->searchable(),
+                TextColumn::make('tahun'),
+                TextColumn::make('nominal_dana')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

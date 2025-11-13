@@ -23,4 +23,11 @@ class ProgramKegiatan extends Model
         'pagu_dipa',
         'pagu_komite',
     ];
+
+    public function standar()
+    {
+        return $this->belongsTo(Standar::class, 'id_standar', 'id');
+        // Foreign key di tb_program_kegiatan → id_standar
+        // Primary key di tb_standar → id
+    }
 }
