@@ -62,7 +62,7 @@ class KelolaPanelProvider extends PanelProvider
             ->plugins([
                 FilamentShieldPlugin::make(),
                 FilamentAwinTheme::make()
-                    ->primaryColor(Color::Pink),
+                    ->primaryColor('#3b82f6'),
                 // FilamentAbyssThemePlugin::make(),
                 // FilamentNordThemePlugin::make(),
                 // BriskTheme::make(),
