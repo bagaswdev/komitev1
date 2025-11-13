@@ -15,10 +15,14 @@ class StandarsTable
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->label('ID')
-                    ->searchable(),
+                // TextColumn::make('id')
+                //     ->label('ID')
+                //     ->searchable(),
                 TextColumn::make('nama_standar')
+                    ->searchable(),
+
+                TextColumn::make('users.name')
+                    ->label('Penanggung Jawab')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

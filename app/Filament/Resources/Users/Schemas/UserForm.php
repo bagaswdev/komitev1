@@ -18,10 +18,11 @@ class UserForm
                 Select::make('roles')
                     ->label('Role')
                     ->relationship('roles', 'name')   // relasi roles -> name
-                    // ->multiple()                      // bisa pilih lebih dari satu role
+                    ->multiple() // harus tetap ada karena relasi Many-to-Many default filament shield
                     ->preload()                       // supaya dropdown cepat muncul
                     ->searchable()
-                    ->required(),
+                    ->required()
+                    ->maxItems(1), // batasi hanya 1 role
 
                 TextInput::make('email')
                     ->label('Email address')
