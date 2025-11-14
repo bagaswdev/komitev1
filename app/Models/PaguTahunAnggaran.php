@@ -18,6 +18,7 @@ class PaguTahunAnggaran extends Model
 
     protected $fillable = [
         'tahun',
-        'nominal_dana', 
+        'nominal_dana',
+        'status_aktif',
     ];
 }
