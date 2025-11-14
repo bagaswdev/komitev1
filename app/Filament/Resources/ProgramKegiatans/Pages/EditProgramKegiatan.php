@@ -19,31 +19,34 @@ class EditProgramKegiatan extends EditRecord
             ViewAction::make(),
             // DeleteAction::make(),
             // 🚫 Ganti Delete bawaan dengan custom action
-            Action::make('safeDelete')
+            // Action::make('safeDelete')
+            //     ->label('Hapus Program Kegiatan Ini')
+            //     ->color('danger')
+            //     ->icon('heroicon-o-trash')
+            //     ->requiresConfirmation()
+            //     ->action(function () {
+            //         if ($this->record->uraianProgram()->exists()) {
+            //             Notification::make()
+            //                 ->title('Tidak bisa dihapus')
+            //                 ->body('Program ini masih memiliki uraian kegiatan. Hapus semua uraian terlebih dahulu.')
+            //                 ->danger()
+            //                 ->send();
+            //             return;
+            //         }
+
+            //         $this->record->delete();
+
+            //         Notification::make()
+            //             ->title('Berhasil dihapus')
+            //             ->success()
+            //             ->send();
+
+            //         return redirect($this->getResource()::getUrl('index'));
+            //     }),
+            DeleteAction::make()
                 ->label('Hapus Program Kegiatan Ini')
                 ->color('danger')
-                ->icon('heroicon-o-trash')
-                ->requiresConfirmation()
-                ->action(function () {
-                    if ($this->record->uraianProgram()->exists()) {
-                        Notification::make()
-                            ->title('Tidak bisa dihapus')
-                            ->body('Program ini masih memiliki uraian kegiatan. Hapus semua uraian terlebih dahulu.')
-                            ->danger()
-                            ->send();
-                        return;
-                    }
-
-                    $this->record->delete();
-
-                    Notification::make()
-                        ->title('Berhasil dihapus')
-                        ->success()
-                        ->send();
-
-                    return redirect($this->getResource()::getUrl('index'));
-                }),
-            DeleteAction::make(),
+                ->icon('heroicon-o-trash'),
             // 🚫 Ganti Delete bawaan dengan custom action
             // Action::make('safeDelete')
             //     ->label('Hapus Program Kegiatan Ini')

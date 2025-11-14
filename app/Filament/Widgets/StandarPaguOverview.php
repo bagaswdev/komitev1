@@ -10,27 +10,23 @@ use Illuminate\Support\Facades\Auth;
 class StandarPaguOverview extends BaseWidget
 {
     protected static ?int $sort = 2;
-    protected int | string | array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'full';
 
     protected function getStats(): array
     {
         $user = Auth::user();
         $userId = $user->id;
 
-        // Cek apakah user adalah admin berdasarkan guard_name
+        // Cek apakah user adalah Super Admin
         $isAdmin = DB::table('users')
             ->where('id', $userId)
-            ->where('name', 'Super Admin') // <-- KUNCI: guard_name = 'admin'
+            ->where('name', 'Super Admin')
             ->exists();
 
-        // Ambil standar yang diizinkan
+        // Ambil standar yang diizinkan (kecuali admin)
         $allowedStandarIds = $isAdmin ? [] : $this->getUserStandarIds($userId);
 
-        // Query utama
-        $stats = DB::table('komite.tb_standar as s')
-            ->leftJoin('komite.tb_program_kegiatan as pk', 'pk.id_standar', '=', 's.id')
-            ->select(
-                's.id',
+        // Query utama: ambil data per standar
         $stats = DB::table('komite.tb_standar as s')
             ->leftJoin('komite.tb_program_kegiatan as pk', 'pk.id_standar', '=', 's.id')
             ->select(
@@ -43,28 +39,21 @@ class StandarPaguOverview extends BaseWidget
             })
             ->groupBy('s.id', 's.nama_standar')
             ->orderBy('s.nama_standar')
-            ->groupBy('s.id', 's.nama_standar')
-            ->orderBy('s.nama_standar') // Urutkan alfabet agar konsisten
             ->get();
 
-        $totalKeseluruhan = $stats->sum('total_pagu');
+        // Hitung total keseluruhan dari hasil query
+        $totalKeseluruhan = $stats->sum('total_pagu'); // ← PAKAI total_pagu (alias)
         $jumlahStandar = $stats->count();
 
         $cards = [];
 
-        // Total Keseluruhan
+        // 1. Total Pagu Keseluruhan
         $cards[] = Stat::make('Total Pagu Standar', 'Rp. ' . number_format($totalKeseluruhan, 0, ',', '.'))
             ->description("{$jumlahStandar} standar")
             ->descriptionIcon('heroicon-m-banknotes')
             ->color('primary');
 
-        // Per Standar
-        $cards[] = Stat::make('Total Pagu Semua Standar', 'Rp. ' . number_format($totalKeseluruhan, 0, ',', '.'))
-            ->description("{$jumlahStandar} standar terdata")
-            ->descriptionIcon('heroicon-m-banknotes')
-            ->color('primary');
-
-        // Per Standar (termasuk yang 0)
+        // 2. Per Standar
         foreach ($stats as $item) {
             $cards[] = Stat::make(
                 $item->nama_standar,
@@ -79,9 +68,9 @@ class StandarPaguOverview extends BaseWidget
     }
 
     /**
-     * Ambil ID standar milik user dari tb_standar_user
+     * Ambil ID standar milik user
      */
-    private function getUserStandarIds($userId): array
+    private function getUserStandarIds(string $userId): array
     {
         return DB::table('komite.tb_standar_user')
             ->where('user_id', $userId)
@@ -90,7 +79,7 @@ class StandarPaguOverview extends BaseWidget
     }
 
     /**
-     * Warna berdasarkan nama standar
+     * Tentukan warna berdasarkan nama standar
      */
     private function getColorByStandar(string $nama): string
     {

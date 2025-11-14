@@ -88,7 +88,20 @@ class ProgramKegiatansTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
+                DeleteAction::make()
+                    ->requiresConfirmation()
+                    ->modalHeading('Hapus Program Kegiatan')
+                    ->modalDescription('Program dan semua uraian di dalamnya akan dihapus permanen.')
+                    ->action(function ($record) {
+                        // PAKSA delete via model → trigger event deleting
+                        $record->delete();
+                    })
+                    ->successNotification(
+                        \Filament\Notifications\Notification::make()
+                            ->success()
+                            ->title('Program berhasil dihapus')
+                            ->body('Semua uraian terkait juga telah dihapus.')
+                    ),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
