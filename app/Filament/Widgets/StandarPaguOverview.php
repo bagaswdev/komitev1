@@ -31,6 +31,9 @@ class StandarPaguOverview extends BaseWidget
             ->leftJoin('komite.tb_program_kegiatan as pk', 'pk.id_standar', '=', 's.id')
             ->select(
                 's.id',
+        $stats = DB::table('komite.tb_standar as s')
+            ->leftJoin('komite.tb_program_kegiatan as pk', 'pk.id_standar', '=', 's.id')
+            ->select(
                 's.nama_standar',
                 DB::raw('COUNT(pk.id) as jumlah_program'),
                 DB::raw('COALESCE(SUM(pk.total), 0) as total_pagu')
@@ -40,6 +43,8 @@ class StandarPaguOverview extends BaseWidget
             })
             ->groupBy('s.id', 's.nama_standar')
             ->orderBy('s.nama_standar')
+            ->groupBy('s.id', 's.nama_standar')
+            ->orderBy('s.nama_standar') // Urutkan alfabet agar konsisten
             ->get();
 
         $totalKeseluruhan = $stats->sum('total_pagu');
@@ -54,6 +59,12 @@ class StandarPaguOverview extends BaseWidget
             ->color('primary');
 
         // Per Standar
+        $cards[] = Stat::make('Total Pagu Semua Standar', 'Rp. ' . number_format($totalKeseluruhan, 0, ',', '.'))
+            ->description("{$jumlahStandar} standar terdata")
+            ->descriptionIcon('heroicon-m-banknotes')
+            ->color('primary');
+
+        // Per Standar (termasuk yang 0)
         foreach ($stats as $item) {
             $cards[] = Stat::make(
                 $item->nama_standar,

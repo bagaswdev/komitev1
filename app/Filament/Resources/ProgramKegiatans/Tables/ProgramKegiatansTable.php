@@ -6,6 +6,7 @@ use Filament\Tables\Table;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
@@ -27,9 +28,9 @@ class ProgramKegiatansTable
                 TextColumn::make('judul_program')
                     ->label('Judul Program')
                     ->searchable(),
-                // TextColumn::make('total')
-                //     ->numeric()
-                //     ->sortable(),
+                TextColumn::make('total')
+                    ->numeric()
+                    ->sortable(),
                 // TextColumn::make('pagu_dipa')
                 //     ->numeric()
                 //     ->sortable(),
@@ -87,6 +88,7 @@ class ProgramKegiatansTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

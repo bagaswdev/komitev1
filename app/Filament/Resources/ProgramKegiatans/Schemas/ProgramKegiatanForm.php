@@ -115,6 +115,7 @@ class ProgramKegiatanForm
                     ])
                     ->defaultItems(1)
                     ->minItems(1) // 👈 tidak bisa dihapus semua
+                    // ->minItems(1) // 👈 tidak bisa dihapus semua
                     ->createItemButtonLabel('Tambah Uraian Kegiatan')
                     ->columns(1)
                     ->columnSpanFull() // 👈 tambahkan ini
