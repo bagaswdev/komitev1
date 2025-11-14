@@ -23,6 +23,38 @@ class UraianProgram extends Model
         'nama_uraian',
         'banyaknya',
         'satuan',
-        'jumlah',
+        // 'jumlah',
     ];
+
+
+    protected static function booted()
+    {
+        static::saving(function ($uraian) {
+            // Pastikan jumlah dihitung dari banyaknya dan satuan setiap kali disimpan
+            $uraian->jumlah = (float) $uraian->banyaknya * (float) $uraian->satuan;
+
+            // Pastikan id_standar ikut otomatis dari relasi program
+            if ($uraian->programKegiatan) {
+                $uraian->id_standar = $uraian->programKegiatan->id_standar;
+            }
+        });
+
+        // ✅ Saat uraian dibuat, diupdate, atau dihapus, otomatis update total di program terkait
+        static::saved(function ($uraian) {
+            if ($uraian->programKegiatan) {
+                $uraian->programKegiatan->hitungTotalUraian();
+            }
+        });
+
+        static::deleted(function ($uraian) {
+            if ($uraian->programKegiatan) {
+                $uraian->programKegiatan->hitungTotalUraian();
+            }
+        });
+    }
+
+    public function programKegiatan()
+    {
+        return $this->belongsTo(ProgramKegiatan::class, 'id_program_kegiatan');
+    }
 }
