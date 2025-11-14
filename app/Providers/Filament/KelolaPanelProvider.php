@@ -3,6 +3,10 @@
 namespace App\Providers\Filament;
 
 use Andreia\FilamentNordTheme\FilamentNordThemePlugin;
+use App\Filament\Widgets\BlogPostsChart;
+use App\Filament\Widgets\PaguAnggaranCard;
+use App\Filament\Widgets\PaguAnggaranOverview;
+use App\Filament\Widgets\StandarPaguChart;
 use App\Filament\Widgets\PaguAnggaranOverview;
 use App\Filament\Widgets\StandarPaguOverview;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
@@ -23,6 +27,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Leandrocfe\FilamentApexCharts\FilamentApexChartsPlugin;
 use Muazzam\SlickScrollbar\SlickScrollbarPlugin;
 use Nagi\FilamentAbyssTheme\FilamentAbyssThemePlugin;
 use Resma\FilamentAwinTheme\FilamentAwinTheme;
@@ -51,6 +56,9 @@ class KelolaPanelProvider extends PanelProvider
                 // FilamentInfoWidget::class,
                 PaguAnggaranOverview::class,
                 StandarPaguOverview::class,
+                // StandarPaguChart::class,
+                // BlogPostsChart::class,
+                // PaguAnggaranCard::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -78,6 +86,7 @@ class KelolaPanelProvider extends PanelProvider
                     ->color('#3b82f6')              // hex
                     ->hoverColor('rgb(220 38 38)')  // rgb()
                     ->color('var(--secondary-500)'),
+                FilamentApexChartsPlugin::make(),
             ])
             ->authMiddleware([
                 Authenticate::class,
