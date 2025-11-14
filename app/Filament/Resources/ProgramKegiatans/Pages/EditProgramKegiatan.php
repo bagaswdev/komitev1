@@ -17,32 +17,32 @@ class EditProgramKegiatan extends EditRecord
     {
         return [
             ViewAction::make(),
-            // DeleteAction::make(),
+            DeleteAction::make(),
             // 🚫 Ganti Delete bawaan dengan custom action
-            Action::make('safeDelete')
-                ->label('Hapus Program Kegiatan Ini')
-                ->color('danger')
-                ->icon('heroicon-o-trash')
-                ->requiresConfirmation()
-                ->action(function () {
-                    if ($this->record->uraianProgram()->exists()) {
-                        Notification::make()
-                            ->title('Tidak bisa dihapus')
-                            ->body('Program ini masih memiliki uraian kegiatan. Hapus semua uraian terlebih dahulu.')
-                            ->danger()
-                            ->send();
-                        return;
-                    }
+            // Action::make('safeDelete')
+            //     ->label('Hapus Program Kegiatan Ini')
+            //     ->color('danger')
+            //     ->icon('heroicon-o-trash')
+            //     ->requiresConfirmation()
+            //     ->action(function () {
+            //         if ($this->record->uraianProgram()->exists()) {
+            //             Notification::make()
+            //                 ->title('Tidak bisa dihapus')
+            //                 ->body('Program ini masih memiliki uraian kegiatan. Hapus semua uraian terlebih dahulu.')
+            //                 ->danger()
+            //                 ->send();
+            //             return;
+            //         }
 
-                    $this->record->delete();
+            //         $this->record->delete();
 
-                    Notification::make()
-                        ->title('Berhasil dihapus')
-                        ->success()
-                        ->send();
+            //         Notification::make()
+            //             ->title('Berhasil dihapus')
+            //             ->success()
+            //             ->send();
 
-                    return redirect($this->getResource()::getUrl('index'));
-                }),
+            //         return redirect($this->getResource()::getUrl('index'));
+            //     }),
         ];
     }
 
